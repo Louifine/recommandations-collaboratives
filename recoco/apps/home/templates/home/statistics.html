@@ -39,9 +39,16 @@
                     .transitionDuration(350)
         ;
 
+        chart.yAxis.tickFormat(d3.format('d'));
+        chart.valueFormat(d3.format('d'));
+
         d3.select('#chart-new svg')
         .datum(newFrichesData())
         .call(chart);
+
+        setTimeout(()=> {
+            chart.update();
+        }, 500);
 
         nv.utils.windowResize(chart.update);
 
